@@ -1,0 +1,1101 @@
+# RithikCollection - Complete Flower E-Commerce Website
+
+Here's the complete single-page flower e-commerce website with all your requirements:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RithikCollection - Premium Flower Shop</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --dark-color: #292f36;
+            --light-color: #f7fff7;
+            --accent-color: #ffd166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519683109079-d5f539e1542f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Categories Section */
+        .category-section {
+            margin: 60px 0;
+        }
+        
+        .category-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: var(--dark-color);
+        }
+        
+        .flower-images {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0 40px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            justify-content: center;
+        }
+        
+        .flower-image {
+            min-width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .flower-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .flower-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .flower-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .category-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+        
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+        
+        .product-rating span {
+            color: #666;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #3dbeb6;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+            padding: 80px 0;
+            margin: 60px 0;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            margin: 60px 0;
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .testimonial-card {
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            scroll-snap-align: start;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .author-role {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .cart-modal.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h2 {
+            font-size: 24px;
+            color: var(--dark-color);
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .close-cart:hover {
+            color: var(--primary-color);
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .cart-item-price {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #eee;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 3px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+        
+        .remove-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+            color: #999;
+        }
+        
+        .empty-cart i {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        /* Star Rating */
+        .stars {
+            color: #ffc107;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-container, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-content, .contact-info, .contact-form {
+                flex: none;
+                width: 100%;
+            }
+            
+            .cart-modal {
+                width: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .category-title {
+                font-size: 30px;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .category-title {
+                font-size: 24px;
+            }
+            
+            .category-products {
+                grid-template-columns: 1fr;
+            }
+            
+            .flower-image {
+                min-width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-spa"></i> RithikCollection
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#bouquets">Bouquets</a></li>
+                    <li><a href="#roses">Roses</a></li>
+                    <li><a href="#tulips">Tulips</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Premium Flowers for Special Occasions</h1>
+            <p>Handcrafted floral arrangements that bring joy to every celebration. Perfect for birthdays, anniversaries, weddings, or just because.</p>
+            <a href="#bouquets" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Bouquets Section -->
+    <section class="category-section" id="bouquets">
+        <div class="container">
+            <h2 class="category-title">Bouquets</h2>
+            
+            <!-- Flower images below the category title -->
+            <div class="flower-images">
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1452827073306-6e6e661baf57?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rose Bouquet">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mixed Bouquet">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tulip Bouquet">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wildflower Bouquet">
+                </div>
+            </div>
+            
+            <div class="category-products" id="bouquets-container">
+                <!-- Bouquets will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Roses Section -->
+    <section class="category-section" id="roses">
+        <div class="container">
+            <h2 class="category-title">Roses</h2>
+            
+            <!-- Flower images below the category title -->
+            <div class="flower-images">
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Red Roses">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1560717843-7b4b6b4c2e5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pink Roses">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1559563362-c667ba5f5480?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="White Roses">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1556910633-ffe996e8c845?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Yellow Roses">
+                </div>
+            </div>
+            
+            <div class="category-products" id="roses-container">
+                <!-- Roses will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tulips Section -->
+    <section class="category-section" id="tulips">
+        <div class="container">
+            <h2 class="category-title">Tulips</h2>
+            
+            <!-- Flower images below the category title -->
+            <div class="flower-images">
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="White Tulips">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Pink Tulips">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1527066579998-dbbae57f45ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Purple Tulips">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mixed Tulips">
+                </div>
+            </div>
+            
+            <div class="category-products" id="tulips-container">
+                <!-- Tulips will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Section -->
+    <section class="category-section" id="seasonal">
+        <div class="container">
+            <h2 class="category-title">Seasonal Flowers</h2>
+            
+            <!-- Flower images below the category title -->
+            <div class="flower-images">
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Summer Flowers">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Autumn Flowers">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Winter Flowers">
+                </div>
+                <div class="flower-image">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Spring Flowers">
+                </div>
+            </div>
+            
+            <div class="category-products" id="seasonal-container">
+                <!-- Seasonal flowers will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RithikCollection Flower Shop">
+            </div>
+            <div class="about-content">
+                <h2>Our Story</h2>
+                <p>RithikCollection was founded with a passion for bringing beauty and happiness to people's lives through exquisite floral arrangements. Our journey began with a small shop and a big dream.</p>
+                <p>Today, we're proud to be Chennai's premier flower destination, known for our exceptional quality, creative designs, and outstanding customer service. Each arrangement is crafted with care by our talented florists.</p>
+                <p>We believe flowers have the power to transform any occasion into something truly special. Whether you're celebrating love, friendship, or life's everyday moments, we're here to help you express your feelings with the perfect floral gift.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="category-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The flowers from RithikCollection were absolutely stunning! They arrived fresh and lasted much longer than I expected. My wife was thrilled with her anniversary bouquet."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar">
+                        </div>
+                        <div>
+                            <div class="author-name">Rajesh Kumar</div>
+                            <div class="author-role">Happy Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've ordered from RithikCollection multiple times and they never disappoint. Their seasonal arrangements are always unique and beautifully designed."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Nair">
+                        </div>
+                        <div>
+                            <div class="author-name">Priya Nair</div>
+                            <div class="author-role">Regular Customer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The wedding flowers RithikCollection created for us were beyond beautiful. They perfectly captured our vision and made our special day even more magical."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya Sharma">
+                        </div>
+                        <div>
+                            <div class="author-name">Ananya Sharma</div>
+                            <div class="author-role">Bride</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>Have questions or special requests? We'd love to hear from you! Reach out to us using the form or contact information below.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chennai, Tamil Nadu</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 6309340891</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>konarithiksai@gmail.com</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>RithikCollection</h3>
+                <p>Bringing beauty and joy to your life through flowers since 2020.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#bouquets">Bouquets</a></li>
+                    <li><a href="#roses">Roses</a></li>
+                    <li><a href="#tulips">Tulips</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates on new arrivals and special offers.</p>
+                <form id="newsletterForm">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2025 RithikCollection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-total" id="cart-total" style="display: none;">
+            <span>Total:</span>
+            <span id="total-amount">₹0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkout-btn" style="display: none;">Proceed to Checkout</button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        // Product Data with Ratings
+        const products = [
+            {
+                id: 1,
+                title: "Spring Blossom Bouquet",
+                price: 2499,
+                description: "A vibrant mix of seasonal flowers perfect for spring celebrations.",
+                category: "bouquets",
+                image: "https://images.unsplash.com/photo-1490750967868-88aa4486 
